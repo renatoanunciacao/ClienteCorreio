@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/templates/template.xhtml">
+        <div class="">
+            <ui:define name="titulo">Serviço Cliente Correios</ui:define>
+        </div>
+        <ui:define name="conteudo">
+            <h:form id="formListagem">
+                <p:commandButton value="Novo" action="#{controleCliente.novo()}"
+                                 icon="ui-icon-plus" class="btn btn-info"/><br/><br/>
+                <p:dataTable class="" value="#{controleCliente.dao.listaCliente}" var="obj" reflow="true" rows="5" paginator="true"> 
+                    <p:column headerText="ID" class="info">
+                        <p:outputLabel value="#{obj.id}" />
+                    </p:column>
+                    <p:column headerText="Nome">
+                        <p:outputLabel value="#{obj.nome}"/>
+                    </p:column>
+                    <p:column headerText="Endereço">
+                        <p:outputLabel value="#{obj.endereco}"/>
+                    </p:column>
+                    <p:column headerText="Valor da Compra">
+                        <p:outputLabel value="#{obj.valorCompra}"/>
+                          
+                            
+                    </p:column>
+                    <p:column headerText="Cep Origem">
+                        <p:outputLabel value="#{obj.cepOrigem}"/>
+                    </p:column>
+                    <p:column headerText="Cep Destino">
+                        <p:outputLabel value="#{obj.cepDestino}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Prazo">
+                        <p:outputLabel value="#{obj.prazo}"/>
+                    </p:column>
+
+                    <p:column headerText="Valor Frete">
+                        <p:outputLabel value="#{obj.valorFrete}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Prazo da Chegada">
+                        <p:outputLabel value="#{obj.prazo}"/>
+                    </p:column>
+                    <p:column headerText="Ações" class="">
+                        <div align="center">
+                            <p:commandButton icon="ui-icon-pencil" update="formListagem" process="@this"
+                                             action="#{controleCliente.alterar(obj)}"/>
+                            <p:commandButton icon="ui-icon-trash" action="#{controleCliente.remover(obj.id)}"
+                                             update="formListagem" onclick="if (!confirm('Confirma a exclusão?'))
+                                                     return false"/>
+                        </div>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
