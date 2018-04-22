@@ -3,25 +3,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-            <title><ui:insert name="titulo"></ui:insert></title>
-        </h:head>
-        <h:body>
-            <b:container style="color: forestgreen;" >
-                <h:form id="formMenu">
-                    <b:navBar brand="SW" style="background-color: lightblue;">
-                        <b:navbarLinks>
-                            <b:navLink value="Inicio" outcome="inicio" style="color: darkcyan"/>                      
-                        </b:navbarLinks>
-                    </b:navBar>
-                </h:form>
-                <h:panelGroup id="conteudo">
-                    <ui:insert name="conteudo">
+        <title><ui:insert name="titulo"></ui:insert></title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" header="Web Service de Clientes do Correio"
+                          style="text-align: center;">
+                <b:container style="color: forestgreen;" >
+                    <h:form id="formMenu">
+                        <b:navBar brand="SW" style="background-color: lightblue;">
+                            <b:navbarLinks>
+                                <b:navLink value="Inicio" outcome="inicio" style="color: darkcyan"/>                      
+                            </b:navbarLinks>
+                        </b:navBar>
+                    </h:form>
+                </b:container>
+            </p:layoutUnit>
+            <p:layoutUnit position="center">
+                <b:container>
+                    <h:panelGroup id="conteudo">
+                        <ui:insert name="conteudo">
+
+                        </ui:insert>
+                    </h:panelGroup>
+                </b:container>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" style="text-align: center;">
+                <b:container>
+                    <ui:insert name="footer">
 
                     </ui:insert>
-                </h:panelGroup>
-            </b:container>
-        </h:body>
+                </b:container>
+            </p:layoutUnit>
+
+        </p:layout>
+    </h:body>
 </html>
 

@@ -43,11 +43,13 @@
                         <p:inputText id="txtPrazoEntrega" value="#{controleCliente.objeto.prazo}" size="50" maxlength="50" 
                                      placeholder="Obrigatório" readonly="true" required="true"/>
                         <p:outputLabel value="Config. de Envio"/>
-                        <p:commandButton value="Frete" style="width: 74px; height: 30px;" type="button" onclick="PF('dlg1').show();" />
+                        <p:commandButton value="Frete"  style="width: 74px; height: 30px;" type="button" onclick="PF('frete').show();" />
                         <f:facet name="footer">
                             <div align="center">
                                 <p:commandButton value="Salvar" ajax="false"
-                                                 action="#{controleCliente.salvar()}"/>
+                                                 action="#{controleCliente.salvar()}"
+                                                 icon="ui-icon-plus" 
+                                                 class="btn btn-success"/>
                             </div>
                         </f:facet>
 
@@ -55,7 +57,7 @@
                 </div>
             </h:form>
             <h:form id="formVenda">
-                <p:dialog header="Valor do Frete e Prazo" widgetVar="dlg1" height="480" width="820" resizable="false">
+                <p:dialog header="Valor do Frete e Prazo" widgetVar="frete" height="520" width="820" resizable="false">
                     <h:form id="formFrete"> 
                         <p:panelGrid columns="2" id="grid">
                             <h:outputLabel value="Empresa: " rendered="#{controleCliente.salvando.NCdEmpresa != null}"/>
@@ -121,15 +123,18 @@
                                 <f:selectItem itemLabel="Não" itemValue="N" />
                             </p:selectOneMenu>
                             <h:outputLabel value="Ação: "/>
+
                             <p:commandButton actionListener="#{controleCliente.enviarDados()}"
-                                             value="Salvar" ajax="false" icon="ui-icon-disk" title="Salvar Frete"
+                                             value="Salvar" ajax="false" icon="ui-icon-plus" class="btn btn-success" title="Salvar Frete"
                                              update=":formVenda :formFrete grid" process="@form"
                                              oncomplete="if (!args.validationFailed){PF('dlg1').hide();}"/>                           
-
                         </p:panelGrid>
                     </h:form>
                 </p:dialog>
             </h:form>
+        </ui:define>
+        <ui:define name="footer">
+            <h:outputLabel value="Direitos reservados 2018"/>
         </ui:define>
     </ui:composition>
 </html>

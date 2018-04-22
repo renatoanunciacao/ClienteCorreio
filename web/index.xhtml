@@ -25,8 +25,8 @@
                     </p:column>
                     <p:column headerText="Valor da Compra">
                         <p:outputLabel value="#{obj.valorCompra}"/>
-                          
-                            
+
+
                     </p:column>
                     <p:column headerText="Cep Origem">
                         <p:outputLabel value="#{obj.cepOrigem}"/>
@@ -34,7 +34,7 @@
                     <p:column headerText="Cep Destino">
                         <p:outputLabel value="#{obj.cepDestino}"/>
                     </p:column>
-                    
+
                     <p:column headerText="Prazo">
                         <p:outputLabel value="#{obj.prazo}"/>
                     </p:column>
@@ -42,21 +42,31 @@
                     <p:column headerText="Valor Frete">
                         <p:outputLabel value="#{obj.valorFrete}"/>
                     </p:column>
-                    
+
                     <p:column headerText="Prazo da Chegada">
                         <p:outputLabel value="#{obj.prazo}"/>
                     </p:column>
                     <p:column headerText="Ações" class="">
                         <div align="center">
-                            <p:commandButton icon="ui-icon-pencil" update="formListagem" process="@this"
-                                             action="#{controleCliente.alterar(obj)}"/>
-                            <p:commandButton icon="ui-icon-trash" action="#{controleCliente.remover(obj.id)}"
-                                             update="formListagem" onclick="if (!confirm('Confirma a exclusão?'))
-                                                     return false"/>
+                            <p:commandButton icon="ui-icon-pencil"
+                                             update="formListagem"
+                                             process="@this"
+                                             action="#{controleCliente.alterar(obj)}"
+                                             style="border: 1px solid blue"/>
+                            <p:commandButton icon="ui-icon-trash" 
+                                             action="#{controleCliente.remover(obj.id)}"
+                                             update="formListagem"
+                                             style="border: 1px solid red"                                             
+                                             onclick="if (!confirm('Confirma a exclusão?'))
+                                                         return false"/>
                         </div>
                     </p:column>
                 </p:dataTable>
             </h:form>
+        </ui:define>
+
+        <ui:define name="footer">
+            <h:outputLabel value="Direitos reservados 2018"/>
         </ui:define>
     </ui:composition>
 </html>
